@@ -37,4 +37,20 @@ public class AddressBookTest {
         //Assert
         assertEquals(testBook.getContactList().size(),0);
     }
+
+    @Test
+    @DisplayName("Does an error get thrown by `removeContact()` when a contact not in the list get removed?")
+    public void testRemoveContact2(){
+        //Arrange
+        AddressBook testBook = new AddressBook();
+        Contact mockContact = mock(Contact.class);
+        testBook.addContact(mockContact);
+
+        //Act
+
+        //Assert
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+            testBook.removeContact(mockContact);
+        });
+    }
 }
