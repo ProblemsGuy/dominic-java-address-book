@@ -105,4 +105,36 @@ public class AddressBookTest {
         //Assert
         assertTrue(expectedValue);
     }
+
+    @Test
+    @DisplayName("Does `checkDuplicatedNumber()` return true when the parameter is included in the `contactList`?")
+    public void testDuplicateData2(){
+        //Arrange
+        AddressBook testBook = new AddressBook();
+        Contact mockContact = mock(Contact.class);
+        when(mockContact.getNumber()).thenReturn("0782203870");
+        testBook.addContact(mockContact);
+
+        //Act
+        boolean expectedValue = testBook.checkDuplicatedNumber("0782203870");
+
+        //Assert
+        assertTrue(expectedValue);
+    }
+
+    @Test
+    @DisplayName("Does `checkDuplicatedEmail()` return true when the parameter is included in the `contactList`?")
+    public void testDuplicateData3(){
+        //Arrange
+        AddressBook testBook = new AddressBook();
+        Contact mockContact = mock(Contact.class);
+        when(mockContact.getNumber()).thenReturn("a@gmail.com");
+        testBook.addContact(mockContact);
+
+        //Act
+        boolean expectedValue = testBook.checkDuplicatedNumber("a@gmail.com");
+
+        //Assert
+        assertTrue(expectedValue);
+    }
 }
