@@ -18,7 +18,7 @@ public class AddressBook {
         contactList.add(contact);
     }
 
-    public void removeContact(Contact contact){
-        contactList.remove(contact);
+    public void removeContact(Contact contact) throws ArrayIndexOutOfBoundsException{
+       if (!contactList.remove(contact)){throw new ArrayIndexOutOfBoundsException("removeContact removes object that isn't present.");}
     }
 }

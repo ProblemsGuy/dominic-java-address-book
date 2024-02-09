@@ -44,7 +44,6 @@ public class AddressBookTest {
         //Arrange
         AddressBook testBook = new AddressBook();
         Contact mockContact = mock(Contact.class);
-        testBook.addContact(mockContact);
 
         //Act
 
