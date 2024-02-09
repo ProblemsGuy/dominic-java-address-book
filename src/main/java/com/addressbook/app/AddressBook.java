@@ -15,6 +15,6 @@ public class AddressBook {
     }
 
     public void addContact(Contact contact){
-
+        contactList.add(contact);
     }
 }
