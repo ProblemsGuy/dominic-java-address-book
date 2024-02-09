@@ -23,6 +23,6 @@ public class AddressBook {
     }
 
     public void editContact(Contact newContact, Contact oldContact){
-
+        contactList.set(contactList.indexOf(oldContact),newContact);
     }
 }
