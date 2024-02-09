@@ -45,11 +45,30 @@ public class AddressBookTest {
         AddressBook testBook = new AddressBook();
         Contact mockContact = mock(Contact.class);
 
+
         //Act
 
         //Assert
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
             testBook.removeContact(mockContact);
         });
+    }
+
+    @Test
+    @DisplayName("Does the data in the edited contact get changed when `editContact()` is run?")
+    public void testEditContact(){
+        //Arrange
+        AddressBook testBook = new AddressBook();
+        Contact mockContact1 = mock(Contact.class);
+        Contact mockContact2 = mock(Contact.class);
+        when(mockContact1.getName()).thenReturn("Jake");
+        when(mockContact2.getName()).thenReturn("Sophie");
+        testBook.addContact(mockContact1);
+
+        //Act
+        testBook.editContact(mockContact2,mockContact1);
+
+        //Assert
+        assertEquals("Sophie",testBook.getContactList().get(0).getName());
     }
 }
