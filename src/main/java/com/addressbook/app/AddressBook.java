@@ -18,11 +18,23 @@ public class AddressBook {
         contactList.add(contact);
     }
 
-    public void removeContact(Contact contact) throws ArrayIndexOutOfBoundsException{
-       if (!contactList.remove(contact)){throw new ArrayIndexOutOfBoundsException("removeContact removes object that isn't present.");}
+    public void removeContact(Contact contact) throws IndexOutOfBoundsException{
+       if (!contactList.remove(contact)){throw new IndexOutOfBoundsException("removeContact removes object that isn't present.");}
     }
 
-    public void editContact(Contact newContact, Contact oldContact){
+    public void editContact(Contact oldContact, Contact newContact) throws IndexOutOfBoundsException{
         contactList.set(contactList.indexOf(oldContact),newContact);
+    }
+
+    public boolean checkDuplicatedName(String name){
+        return false;
+    }
+
+    public boolean checkDuplicatedNumber(String number){
+        return false;
+    }
+
+    public boolean checkDuplicatedEmail(String email){
+        return false;
     }
 }

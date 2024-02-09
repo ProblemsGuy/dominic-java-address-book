@@ -49,14 +49,14 @@ public class AddressBookTest {
         //Act
 
         //Assert
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
             testBook.removeContact(mockContact);
         });
     }
 
     @Test
     @DisplayName("Does the data in the edited contact get changed when `editContact()` is run?")
-    public void testEditContact(){
+    public void testEditContact1(){
         //Arrange
         AddressBook testBook = new AddressBook();
         Contact mockContact1 = mock(Contact.class);
@@ -66,9 +66,43 @@ public class AddressBookTest {
         testBook.addContact(mockContact1);
 
         //Act
-        testBook.editContact(mockContact2,mockContact1);
+        testBook.editContact(mockContact1,mockContact2);
 
         //Assert
         assertEquals("Sophie",testBook.getContactList().get(0).getName());
+    }
+
+    @Test
+    @DisplayName("Does the data in the edited contact get changed when `editContact()` is run?")
+    public void testEditContact2(){
+        //Arrange
+        AddressBook testBook = new AddressBook();
+        Contact mockContact1 = mock(Contact.class);
+        Contact mockContact2 = mock(Contact.class);
+        when(mockContact1.getName()).thenReturn("Jake");
+        when(mockContact2.getName()).thenReturn("Sophie");
+
+        //Act
+
+        //Assert
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            testBook.editContact(mockContact1,mockContact2);
+        });
+    }
+
+    @Test
+    @DisplayName("Does `checkDuplicatedName()` return true when the parameter is included in the `contactList`?")
+    public void testDuplicateData1(){
+        //Arrange
+        AddressBook testBook = new AddressBook();
+        Contact mockContact = mock(Contact.class);
+        when(mockContact.getName()).thenReturn("Jake");
+        testBook.addContact(mockContact);
+
+        //Act
+        boolean expectedValue = testBook.checkDuplicatedName("Jake");
+
+        //Assert
+        assertTrue(expectedValue);
     }
 }
