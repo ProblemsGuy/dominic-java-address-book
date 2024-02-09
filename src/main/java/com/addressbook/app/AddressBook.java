@@ -1,6 +1,7 @@
 package com.addressbook.app;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class AddressBook {
@@ -27,14 +28,26 @@ public class AddressBook {
     }
 
     public boolean checkDuplicatedName(String name){
-        return false;
+        boolean returnValue = false;
+        for (Contact current : contactList) {
+            returnValue = current.getName().equals(name);
+        }
+        return returnValue;
     }
 
     public boolean checkDuplicatedNumber(String number){
-        return false;
+        boolean returnValue = false;
+        for (Contact current : contactList) {
+            returnValue = current.getNumber().equals(number);
+        }
+        return returnValue;
     }
 
     public boolean checkDuplicatedEmail(String email){
-        return false;
+        boolean returnValue = false;
+        for (Contact current : contactList) {
+            returnValue = current.getEmail().equals(email);
+        }
+        return returnValue;
     }
 }

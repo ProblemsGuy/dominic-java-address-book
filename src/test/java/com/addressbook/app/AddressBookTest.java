@@ -128,11 +128,11 @@ public class AddressBookTest {
         //Arrange
         AddressBook testBook = new AddressBook();
         Contact mockContact = mock(Contact.class);
-        when(mockContact.getNumber()).thenReturn("a@gmail.com");
+        when(mockContact.getEmail()).thenReturn("a@gmail.com");
         testBook.addContact(mockContact);
 
         //Act
-        boolean expectedValue = testBook.checkDuplicatedNumber("a@gmail.com");
+        boolean expectedValue = testBook.checkDuplicatedEmail("a@gmail.com");
 
         //Assert
         assertTrue(expectedValue);
