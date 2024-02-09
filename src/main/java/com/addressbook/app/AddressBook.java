@@ -17,4 +17,7 @@ public class AddressBook {
     public void addContact(Contact contact){
         contactList.add(contact);
     }
+
+    public void removeContact(Contact contact){
+    }
 }

@@ -23,5 +23,18 @@ public class AddressBookTest {
         assertEquals(testBook.getContactList().get(0).getName(),"Jake");
     }
 
+    @Test
+    @DisplayName("Does a contact get removed when `removeContact()` is run with a contact in the list?")
+    public void testRemoveContact1(){
+        //Arrange
+        AddressBook testBook = new AddressBook();
+        Contact mockContact = mock(Contact.class);
+        testBook.addContact(mockContact);
 
+        //Act
+        testBook.removeContact(mockContact);
+
+        //Assert
+        assertEquals(testBook.getContactList().size(),0);
+    }
 }
