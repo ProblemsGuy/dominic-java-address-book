@@ -19,5 +19,6 @@ public class AddressBook {
     }
 
     public void removeContact(Contact contact){
+        contactList.remove(contact);
     }
 }
