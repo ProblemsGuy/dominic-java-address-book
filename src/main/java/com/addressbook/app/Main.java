@@ -42,11 +42,26 @@ public class Main {
     private void addContact(Scanner scanner){
         Contact newContact = new Contact();
         p("Enter the new Contact's name:");
-        newContact.setName(scanner.next());
+        String newInput = scanner.next();
+        if(book.checkDuplicatedName(newInput)){
+            p("Name is already used.");
+            return;
+        }
+        newContact.setName(newInput);
         p("Enter the new Contact's number:");
-        newContact.setNumber(scanner.next());
+        newInput = scanner.next();
+        if(book.checkDuplicatedNumber(newInput)){
+            p("Number is already used.");
+            return;
+        }
+        newContact.setNumber(newInput);
         p("Enter the new Contact's email:");
-        newContact.setEmail(scanner.next());
+        newInput = scanner.next();
+        if(book.checkDuplicatedEmail(newInput)){
+            p("Email is already used.");
+            return;
+        }
+        newContact.setEmail(newInput);
         book.addContact(newContact);
         p("Contact is added!");
     }
