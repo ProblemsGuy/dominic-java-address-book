@@ -14,7 +14,7 @@ public class MainTest {
     public void menuTest1() {
         //Arrange
         Main main = new Main();
-        Scanner mockScanner = new Scanner("1 Jake jake@gmail.com 0777777778");
+        Scanner mockScanner = new Scanner("1 Jake jake@gmail.com 0777777778 9");
 
         //Act
         main.menu(mockScanner);
@@ -30,9 +30,9 @@ public class MainTest {
     public void menuTest2() {
         //Arrange
         Main main = new Main();
-        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 9");
         main.menu(scanner1);
-        Scanner scanner2 = new Scanner("2 Jake");
+        Scanner scanner2 = new Scanner("2 Jake 9");
 
         //Act
         main.menu(scanner2);
@@ -46,9 +46,9 @@ public class MainTest {
     public void menuTest3() {
         //Arrange
         Main main = new Main();
-        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 9");
         main.menu(scanner1);
-        Scanner scanner2 = new Scanner("2 Jim");
+        Scanner scanner2 = new Scanner("2 Jim 9");
 
         //Act
         main.menu(scanner2);
@@ -62,9 +62,9 @@ public class MainTest {
     public void menuTest4() {
         //Arrange
         Main main = new Main();
-        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 9");
         main.menu(scanner1);
-        Scanner scanner2 = new Scanner("3 Jake");
+        Scanner scanner2 = new Scanner("3 Jake 9");
 
         //Act
         main.menu(scanner2);
@@ -78,11 +78,11 @@ public class MainTest {
     public void menuTest5() {
         //Arrange
         Main main = new Main();
-        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 9");
         main.menu(scanner1);
-        Scanner scanner2 = new Scanner("4 Jake 1 Jim");
-        Scanner scanner3 = new Scanner("4 Jim 2 jim@gmail.com");
-        Scanner scanner4 = new Scanner("4 Jim 3 0799999998");
+        Scanner scanner2 = new Scanner("4 Jake 1 Jim 9");
+        Scanner scanner3 = new Scanner("4 Jim 2 jim@gmail.com 9");
+        Scanner scanner4 = new Scanner("4 Jim 3 0799999998 9");
 
         //Act
         main.menu(scanner2);
@@ -100,19 +100,14 @@ public class MainTest {
     public void menuTest6(){
         //Arrange
         Main main = new Main();
-        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
-        Scanner scanner2 = new Scanner("1 Jake jake@gmail.com 0777777778");
-        Scanner scanner3 = new Scanner("1 Jim jake@gmail.com 0777777778");
-        Scanner scanner4 = new Scanner("1 Jim jim@gmail.com 0777777778");
-
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jake 1 Jim jake@gmail.com 1 Jim jim@gmail.com 0777777778 9");
 
         //Act
         main.menu(scanner1);
-        main.menu(scanner2);
-        main.menu(scanner3);
-        main.menu(scanner4);
 
         //Assert
         assertEquals(1, main.book.getContactList().size());
     }
+
+
 }
