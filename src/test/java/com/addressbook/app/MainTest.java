@@ -122,7 +122,7 @@ public class MainTest {
     @DisplayName("Does duplicate data not get input into the AddressBook when using `editContact()`?")
     public void menuTest8(){
         Main main = new Main();
-        Scanner scanner = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jim jim@gmail.com 0777777779 4 Jake 1 Jim 4 Jake 2 jim@gmail.com 4 Jake 3 0777777779");
+        Scanner scanner = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jim jim@gmail.com 0777777779 4 Jake 1 Jim 4 Jake 2 jim@gmail.com 4 Jake 3 0777777779 9");
 
         //Act
         main.menu(scanner);

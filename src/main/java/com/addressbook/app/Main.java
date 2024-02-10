@@ -48,27 +48,21 @@ public class Main {
         Contact newContact = new Contact();
         p("Enter the new Contact's name:");
         String newInput = scanner.next();
-        if(book.checkDuplicatedName(newInput)){
-            p("Name is already used.");
-            p("");
+        if (this.checkName(newInput)) {
             this.next(scanner);
             return;
         }
         newContact.setName(newInput);
         p("Enter the new Contact's number:");
         newInput = scanner.next();
-        if(book.checkDuplicatedNumber(newInput)){
-            p("Number is already used.");
-            p("");
+        if (this.checkNumber(newInput)) {
             this.next(scanner);
             return;
         }
         newContact.setNumber(newInput);
         p("Enter the new Contact's email:");
         newInput = scanner.next();
-        if(book.checkDuplicatedEmail(newInput)){
-            p("Email is already used.");
-            p("");
+        if (this.checkEmail(newInput)) {
             this.next(scanner);
             return;
         }
@@ -77,6 +71,32 @@ public class Main {
         p("Contact is added!");
         p("");
         this.next(scanner);
+    }
+    private boolean checkName(String newInput){
+        if(book.checkDuplicatedName(newInput)){
+            p("Name is already used.");
+            p("");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkNumber(String newInput){
+        if(book.checkDuplicatedNumber(newInput)){
+            p("Number is already used.");
+            p("");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkEmail(String newInput){
+        if(book.checkDuplicatedEmail(newInput)){
+            p("Email is already used.");
+            p("");
+            return true;
+        }
+        return false;
     }
 
     private Contact findContactByName(Scanner scanner){
@@ -137,7 +157,12 @@ public class Main {
     private void editName(Scanner scanner,Contact edit){
         Contact oldContact = edit;
         p("Enter the Contact's new name:");
-        edit.setName(scanner.next());
+        String newInput = scanner.next();
+        if (this.checkName(newInput)) {
+            this.next(scanner);
+            return;
+        }
+        edit.setName(newInput);
         book.editContact(oldContact,edit);
         p("");
         this.next(scanner);
@@ -146,7 +171,12 @@ public class Main {
     private void editNumber(Scanner scanner,Contact edit){
         Contact oldContact = edit;
         p("Enter the Contact's new number:");
-        edit.setNumber(scanner.next());
+        String newInput = scanner.next();
+        if (this.checkNumber(newInput)) {
+            this.next(scanner);
+            return;
+        }
+        edit.setNumber(newInput);
         book.editContact(oldContact,edit);
         p("");
         this.next(scanner);
@@ -155,7 +185,12 @@ public class Main {
     private void editEmail(Scanner scanner,Contact edit){
         Contact oldContact = edit;
         p("Enter the Contact's new email:");
-        edit.setEmail(scanner.next());
+        String newInput = scanner.next();
+        if (this.checkEmail(newInput)) {
+            this.next(scanner);
+            return;
+        }
+        edit.setEmail(newInput);
         book.editContact(oldContact,edit);
         p("");
         this.next(scanner);
