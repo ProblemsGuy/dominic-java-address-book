@@ -1,9 +1,9 @@
 package com.addressbook.app;
 
 public class Contact {
-    String name;
-    String number;
-    String email;
+    private String name;
+    private String number;
+    private String email;
 
     public Contact(){}
 

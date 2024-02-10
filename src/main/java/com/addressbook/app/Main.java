@@ -3,11 +3,8 @@ package com.addressbook.app;
 import java.util.Scanner;
 
 public class Main {
-
     public AddressBook book;
-    public static void main(String[] args) {
 
-    }
     public Main(){
         book = new AddressBook();
     }
@@ -17,8 +14,9 @@ public class Main {
         p("------------------------------------------------------------------------------");
         p("1. Add a new contact to your Address Book.");
         p("2. Remove an existing contact from your Address Book.");
-        p("3. Edit an existing contact in your Address Book.");
-        p("4. Display the content of your Address Book to view.");
+        p("3. Search for a specific contact by name.");
+        p("4. Edit an existing contact in your Address Book.");
+        p("5. Display the content of your Address Book to view.");
         p("Enter any other number to exit this application");
         switch( scanner.nextInt() ){
             case 1:
@@ -28,9 +26,12 @@ public class Main {
                 removeContact(scanner);
                 break;
             case 3:
-                editContact(scanner);
+                showContactByName(scanner);
                 break;
             case 4:
+                editContact(scanner);
+                break;
+            case 5:
                 printAddressBook(scanner);
                 break;
             default:
@@ -50,19 +51,32 @@ public class Main {
         p("Contact is added!");
     }
 
-    private void removeContact(Scanner scanner){
-        Contact oldContact = new Contact();
+    private Contact findContactByName(Scanner scanner){
         p("Enter the Contact's name:");
         try{
-            book.removeContact(scanner.next());
-            p("Contact is removed!");
+            return book.getContactByName(scanner.next());
         } catch (IndexOutOfBoundsException e){
-            p("Cannot remove contact who does not exist in Address Book");
+            p("No Contact found with that name.");
+            return null;
+        }
+    }
+
+    private void removeContact(Scanner scanner){
+        Contact foundContact = findContactByName(scanner);
+        if(foundContact != null) {
+            book.removeContact(findContactByName(scanner).getName());
+            p("Contact is removed!");
+        }
+    }
+
+    private void showContactByName(Scanner scanner){
+        Contact foundContact = findContactByName(scanner);
+        if(foundContact != null){
+            printContact(foundContact);
         }
     }
 
     private void editContact(Scanner scanner){
-
     }
 
     private void editName(Scanner scanner){
@@ -83,5 +97,13 @@ public class Main {
 
     static private void p(String str){
         System.out.println(str);
+    }
+
+    static private void printContact(Contact cont){
+        p("Contact");
+        p("-------");
+        p("Name: "+ cont.getName());
+        p("Number: "+ cont.getNumber());
+        p("Email: "+ cont.getEmail());
     }
 }

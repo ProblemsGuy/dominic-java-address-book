@@ -37,11 +37,12 @@ public class AddressBook {
     }
 
     public boolean checkDuplicatedName(String name){
-        boolean returnValue = false;
-        for (Contact current : contactList) {
-            returnValue = current.getName().equals(name);
+        try {
+            this.getContactByName(name);
+            return true;
+        } catch (IndexOutOfBoundsException e){
+            return false;
         }
-        return returnValue;
     }
 
     public boolean checkDuplicatedNumber(String number){
