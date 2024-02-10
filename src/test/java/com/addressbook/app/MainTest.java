@@ -102,10 +102,15 @@ public class MainTest {
         Main main = new Main();
         Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
         Scanner scanner2 = new Scanner("1 Jake jake@gmail.com 0777777778");
+        Scanner scanner3 = new Scanner("1 Jim jake@gmail.com 0777777778");
+        Scanner scanner4 = new Scanner("1 Jim jim@gmail.com 0777777778");
+
 
         //Act
         main.menu(scanner1);
         main.menu(scanner2);
+        main.menu(scanner3);
+        main.menu(scanner4);
 
         //Assert
         assertEquals(1, main.book.getContactList().size());
