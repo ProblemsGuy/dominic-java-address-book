@@ -9,6 +9,12 @@ public class Main {
         book = new AddressBook();
     }
 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Main main = new Main();
+        main.menu(scanner);
+    }
+
     public void menu(Scanner scanner){
         p("Welcome to your Address Book! Please enter a number to select an option below.");
         p("------------------------------------------------------------------------------");
@@ -21,22 +27,22 @@ public class Main {
         p("3. Search for a specific contact by name.");
         p("4. Edit an existing contact in your Address Book.");
         p("5. Display the content of your Address Book to view.");
-        p("Enter any other number to exit this application");
+        p("Enter any thing else to exit this application");
         p("");
-        switch( scanner.nextInt() ){
-            case 1:
+        switch( scanner.next() ){
+            case "1":
                 addContact(scanner);
                 break;
-            case 2:
+            case "2":
                 removeContact(scanner);
                 break;
-            case 3:
+            case "3":
                 showContactByName(scanner);
                 break;
-            case 4:
+            case "4":
                 editContact(scanner);
                 break;
-            case 5:
+            case "5":
                 printAddressBook(scanner);
                 break;
             default:
@@ -137,14 +143,14 @@ public class Main {
         p("1. Name");
         p("2. Number");
         p("3. Email");
-        switch (scanner.nextInt()){
-            case 1:
+        switch (scanner.next()){
+            case "1":
                 editName(scanner, foundContact);
                 break;
-            case 2:
+            case "2":
                 editNumber(scanner,foundContact);
                 break;
-            case 3:
+            case "3":
                 editEmail(scanner,foundContact);
                 break;
             default:
