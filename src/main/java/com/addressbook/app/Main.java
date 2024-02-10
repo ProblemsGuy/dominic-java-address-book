@@ -77,7 +77,6 @@ public class Main {
     }
 
     private void editContact(Scanner scanner){
-
     }
 
     private void editName(Scanner scanner){
