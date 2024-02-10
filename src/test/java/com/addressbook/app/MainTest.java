@@ -15,16 +15,32 @@ public class MainTest {
     public void menuTest1(){
         //Arrange
         Main main = new Main();
-        Scanner mockScanner = mock(Scanner.class);
-        when(mockScanner.nextInt()).thenReturn(1);
-        when(mockScanner.next()).thenReturn("Jake");
+        Scanner mockScanner = new Scanner("1 Jake jake@gmail.com 0777777778");
 
         //Act
         main.menu(mockScanner);
 
         //Assert
         assertEquals("Jake",main.book.getContactList().get(0).getName());
-        assertEquals("Jake",main.book.getContactList().get(0).getNumber());
-        assertEquals("Jake",main.book.getContactList().get(0).getEmail());
+        assertEquals("jake@gmail.com",main.book.getContactList().get(0).getNumber());
+        assertEquals("0777777778",main.book.getContactList().get(0).getEmail());
     }
+
+    @Test
+    @DisplayName("Does `menu()` progress if it's given a '2' input, and can a user then remove a contact?")
+    public void menuTest2(){
+        //Arrange
+        Main main = new Main();
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
+        main.menu(scanner1);
+        Scanner scanner2 = new Scanner("2 Jake");
+
+        //Act
+        main.menu(scanner2);
+
+        //Assert
+        assertEquals(0,main.book.getContactList().size());
+    }
+
+
 }
