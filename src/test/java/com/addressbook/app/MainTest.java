@@ -18,12 +18,13 @@ public class MainTest {
         Scanner mockScanner = mock(Scanner.class);
         when(mockScanner.nextInt()).thenReturn(1);
         when(mockScanner.next()).thenReturn("Jake");
-        AddressBook mockAddress = mock(AddressBook.class);
 
         //Act
-        main.menu(mockScanner, mockAddress);
+        main.menu(mockScanner);
 
         //Assert
-        assertEquals("Jake",mockAddress.getContactList().get(0).getName());
+        assertEquals("Jake",main.book.getContactList().get(0).getName());
+        assertEquals("Jake",main.book.getContactList().get(0).getNumber());
+        assertEquals("Jake",main.book.getContactList().get(0).getEmail());
     }
 }
