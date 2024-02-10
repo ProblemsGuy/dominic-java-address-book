@@ -82,8 +82,8 @@ public class MainTest {
         Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
         main.menu(scanner1);
         Scanner scanner2 = new Scanner("4 Jake 1 Jim");
-        Scanner scanner3 = new Scanner("4 Jake 2 jim@gmail.com");
-        Scanner scanner4 = new Scanner("4 Jake 3 0799999998");
+        Scanner scanner3 = new Scanner("4 Jim 2 jim@gmail.com");
+        Scanner scanner4 = new Scanner("4 Jim 3 0799999998");
 
         //Act
         main.menu(scanner2);

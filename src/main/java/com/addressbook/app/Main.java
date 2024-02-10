@@ -64,7 +64,7 @@ public class Main {
     private void removeContact(Scanner scanner){
         Contact foundContact = findContactByName(scanner);
         if(foundContact != null) {
-            book.removeContact(findContactByName(scanner).getName());
+            book.removeContact(foundContact.getName());
             p("Contact is removed!");
         }
     }
@@ -77,18 +77,48 @@ public class Main {
     }
 
     private void editContact(Scanner scanner){
+        Contact foundContact = findContactByName(scanner);
+        if (foundContact == null){
+            return;
+        }
+        p("Which would you like to edit? Please enter the corresponding number.");
+        p("1. Name");
+        p("2. Number");
+        p("3. Email");
+        switch (scanner.nextInt()){
+            case 1:
+                editName(scanner, foundContact);
+                break;
+            case 2:
+                editNumber(scanner,foundContact);
+                break;
+            case 3:
+                editEmail(scanner,foundContact);
+                break;
+            default:
+                break;
+        }
     }
 
-    private void editName(Scanner scanner){
-
+    private void editName(Scanner scanner,Contact edit){
+        Contact oldContact = edit;
+        p("Enter the Contact's new name:");
+        edit.setName(scanner.next());
+        book.editContact(oldContact,edit);
     }
 
-    private void editNumber(Scanner scanner){
-
+    private void editNumber(Scanner scanner,Contact edit){
+        Contact oldContact = edit;
+        p("Enter the Contact's new number:");
+        edit.setNumber(scanner.next());
+        book.editContact(oldContact,edit);
     }
 
-    private void editEmail(Scanner scanner){
-
+    private void editEmail(Scanner scanner,Contact edit){
+        Contact oldContact = edit;
+        p("Enter the Contact's new email:");
+        edit.setEmail(scanner.next());
+        book.editContact(oldContact,edit);
     }
 
     private void printAddressBook(Scanner scanner){
