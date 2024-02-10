@@ -20,7 +20,15 @@ public class AddressBook {
     }
 
     public void removeContact(Contact contact) throws IndexOutOfBoundsException{
-       if (!contactList.remove(contact)){throw new IndexOutOfBoundsException("removeContact removes object that isn't present.");}
+        boolean removedSomething = false;
+        for(Contact current: contactList){
+            if(contact.getName().equals(current.getName()) && contact.getNumber().equals(current.getNumber()) && contact.getEmail().equals(current.getEmail())){
+                contactList.remove(current);
+                removedSomething = true;
+                break;
+            }
+        }
+        if (!removedSomething){throw new IndexOutOfBoundsException();}
     }
 
     public void editContact(Contact oldContact, Contact newContact) throws IndexOutOfBoundsException{

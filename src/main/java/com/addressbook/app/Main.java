@@ -51,7 +51,19 @@ public class Main {
     }
 
     private void removeContact(Scanner scanner){
-
+        Contact oldContact = new Contact();
+        p("Enter the Contact's name:");
+        oldContact.setName(scanner.next());
+        p("Enter the Contact's number:");
+        oldContact.setNumber(scanner.next());
+        p("Enter the Contact's email:");
+        oldContact.setEmail(scanner.next());
+        try{
+            book.removeContact(oldContact);
+            p("Contact is removed!");
+        } catch (IndexOutOfBoundsException e){
+            p("Cannot remove contact who does not exist in Address Book");
+        }
     }
 
     private void editContact(Scanner scanner){

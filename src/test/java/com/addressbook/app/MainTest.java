@@ -33,7 +33,7 @@ public class MainTest {
         Main main = new Main();
         Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
         main.menu(scanner1);
-        Scanner scanner2 = new Scanner("2 Jake");
+        Scanner scanner2 = new Scanner("2 Jake jake@gmail.com 0777777778");
 
         //Act
         main.menu(scanner2);
