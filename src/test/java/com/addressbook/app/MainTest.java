@@ -132,4 +132,11 @@ public class MainTest {
         assertEquals("jake@gmail.com", main.book.getContactList().get(0).getNumber());
         assertEquals("0777777778", main.book.getContactList().get(0).getEmail());
     }
+
+    @Test
+    @DisplayName("Does a phone number that doesn't start with 07 and is less than 10 digits long get prevent from being input into a Contact?")
+    public void menuEdgeCaseNumbers(){
+        Main main = new Main();
+        Scanner scanner = new Scanner("");
+    }
 }

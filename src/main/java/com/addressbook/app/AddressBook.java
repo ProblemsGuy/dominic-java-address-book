@@ -1,14 +1,11 @@
 package com.addressbook.app;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class AddressBook {
     List<Contact> contactList;
 
-    public AddressBook(){
-        contactList = new ArrayList<>();
+    public AddressBook(List<Contact> c_list){
+        contactList = c_list;
     }
 
     public List<Contact> getContactList() {

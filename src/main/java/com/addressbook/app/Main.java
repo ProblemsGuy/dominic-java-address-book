@@ -1,12 +1,14 @@
 package com.addressbook.app;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public AddressBook book;
 
     public Main(){
-        book = new AddressBook();
+        book = new AddressBook(new ArrayList<Contact>());
     }
 
     public static void main(String[] args) {
