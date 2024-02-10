@@ -29,10 +29,12 @@ public class AddressBookTest {
         //Arrange
         AddressBook testBook = new AddressBook();
         Contact mockContact = mock(Contact.class);
+        when(mockContact.getName()).thenReturn("Jake");
         testBook.addContact(mockContact);
+        String name = "Jake";
 
         //Act
-        testBook.removeContact(mockContact);
+        testBook.removeContact(name);
 
         //Assert
         assertEquals(testBook.getContactList().size(),0);
@@ -43,15 +45,12 @@ public class AddressBookTest {
     public void testRemoveContact2(){
         //Arrange
         AddressBook testBook = new AddressBook();
-        Contact mockContact = mock(Contact.class);
-
+        String name = "Jake";
 
         //Act
 
         //Assert
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            testBook.removeContact(mockContact);
-        });
+        assertThrows(IndexOutOfBoundsException.class, () -> testBook.removeContact(name));
     }
 
     @Test
@@ -85,9 +84,7 @@ public class AddressBookTest {
         //Act
 
         //Assert
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            testBook.editContact(mockContact1,mockContact2);
-        });
+        assertThrows(IndexOutOfBoundsException.class, () -> testBook.editContact(mockContact1,mockContact2));
     }
 
     @Test

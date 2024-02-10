@@ -19,16 +19,17 @@ public class AddressBook {
         contactList.add(contact);
     }
 
-    public void removeContact(Contact contact) throws IndexOutOfBoundsException{
-        boolean removedSomething = false;
+    public Contact getContactByName(String name) throws IndexOutOfBoundsException{
         for(Contact current: contactList){
-            if(contact.getName().equals(current.getName()) && contact.getNumber().equals(current.getNumber()) && contact.getEmail().equals(current.getEmail())){
-                contactList.remove(current);
-                removedSomething = true;
-                break;
+            if(current.getName().equals(name)){
+                return current;
             }
         }
-        if (!removedSomething){throw new IndexOutOfBoundsException();}
+        throw new IndexOutOfBoundsException();
+    }
+    public void removeContact(String name) throws IndexOutOfBoundsException{
+        Contact oldContact = this.getContactByName(name);
+        contactList.remove(oldContact);
     }
 
     public void editContact(Contact oldContact, Contact newContact) throws IndexOutOfBoundsException{

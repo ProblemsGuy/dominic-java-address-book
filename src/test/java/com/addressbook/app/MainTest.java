@@ -33,7 +33,7 @@ public class MainTest {
         Main main = new Main();
         Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
         main.menu(scanner1);
-        Scanner scanner2 = new Scanner("2 Jake jake@gmail.com 0777777778");
+        Scanner scanner2 = new Scanner("2 Jake");
 
         //Act
         main.menu(scanner2);
@@ -42,5 +42,19 @@ public class MainTest {
         assertEquals(0,main.book.getContactList().size());
     }
 
+    @Test
+    @DisplayName("Does trying to remove a contact through the `menu()` that doesn't exist warn the user?")
+    public void menuTest3(){
+        //Arrange
+        Main main = new Main();
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778");
+        main.menu(scanner1);
+        Scanner scanner2 = new Scanner("2 Jim");
 
+        //Act
+        main.menu(scanner2);
+
+        //Assert
+        assertEquals(1,main.book.getContactList().size());
+    }
 }
