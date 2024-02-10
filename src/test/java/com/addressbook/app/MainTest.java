@@ -109,5 +109,12 @@ public class MainTest {
         assertEquals(1, main.book.getContactList().size());
     }
 
+    @Test
+    @DisplayName("Checking that printing the list works.")
+    public void menuTest7(){
+        Main main = new Main();
+        Scanner scanner = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jim jim@gmail.com 0777777779 1 Jill jill@hotmail.com 0787878787 5 9");
 
+        main.menu(scanner);
+    }
 }
