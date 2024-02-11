@@ -3,6 +3,8 @@ package com.addressbook.app;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
     public AddressBook book;
@@ -11,7 +13,7 @@ public class Main {
         book = new AddressBook(new ArrayList<Contact>());
     }
 
-    //psmv; runs the menu and starts a functional loop that only exits when the user enters a non-valid input.
+    //psvm; runs the menu and starts a functional loop that only exits when the user enters a non-valid input.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Main main = new Main();
@@ -55,33 +57,29 @@ public class Main {
         }
     }
 
-    private void addContact(Scanner scanner){
+    private void addContact(Scanner scanner) {
         //Creates a new Contact
         Contact newContact = new Contact();
-        p("Enter the new Contact's name:");
-        String newInput = scanner.next();
-        //If the name input is already in the book, it returns to the menu
-        if (this.checkName(newInput)) {
-            this.next(scanner);
-            return;
-        }
+        boolean validInputGiven;
+        String newInput;
+        do {
+            p("Enter the new Contact's name:");
+            newInput = scanner.next();
+            validInputGiven = checkName(newInput);
+        } while (!validInputGiven);
         newContact.setName(newInput);
-        p("Enter the new Contact's number:");
-        newInput = scanner.next();
-        //If the number input is already in the book, it returns to the menu
-        if (this.checkNumber(newInput)) {
-            this.next(scanner);
-            return;
-        }
-        newContact.setNumber(newInput);
-        p("Enter the new Contact's email:");
-        newInput = scanner.next();
-        //If the email input is already in the book, it returns to the menu
-        if (this.checkEmail(newInput)) {
-            this.next(scanner);
-            return;
-        }
+        do {
+            p("Enter the new Contact's email:");
+            newInput = scanner.next();
+            validInputGiven = checkEmail(newInput);
+        } while (!validInputGiven);
         newContact.setEmail(newInput);
+        do {
+            p("Enter the new Contact's number:");
+            newInput = scanner.next();
+            validInputGiven = checkNumber(newInput);
+        } while (!validInputGiven);
+        newContact.setNumber(newInput);
         //Adds the contact to the Address Book
         book.addContact(newContact);
         p("Contact is added!");
@@ -91,29 +89,33 @@ public class Main {
 
     //Checks the name isn't already in the Contact
     private boolean checkName(String newInput){
-        if(book.checkDuplicatedName(newInput)){
-            p("Name is already used.");
-            p("");
+        if(!book.checkDuplicatedName(newInput) && regexValidName(newInput)){
             return true;
         }
+        p("Name either already in used, or contains invalid characters.");
+        p("");
         return false;
     }
 
+    private boolean regexValidName(String newInput){
+        return newInput.matches("^[a-zA-Z\\s]+");
+    }
+
     private boolean checkNumber(String newInput){
-        if(book.checkDuplicatedNumber(newInput)){
-            p("Number is already used.");
-            p("");
+        if(!book.checkDuplicatedNumber(newInput)){
             return true;
         }
+        p("Number is already used.");
+        p("");
         return false;
     }
 
     private boolean checkEmail(String newInput){
-        if(book.checkDuplicatedEmail(newInput)){
-            p("Email is already used.");
-            p("");
+        if(!book.checkDuplicatedEmail(newInput)){
             return true;
         }
+        p("Email is already used.");
+        p("");
         return false;
     }
 

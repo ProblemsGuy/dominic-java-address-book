@@ -137,7 +137,7 @@ public class MainTest {
     @DisplayName("Does a name without a capital letter at the start not get passed into the Contact?")
     public void menuEdgeCaseNumbers(){
         Main main = new Main();
-        Scanner scanner = new Scanner("1 jake Jake jake@gmail.com 0777777778 9");
+        Scanner scanner = new Scanner("1 j2ake Jake jake@gmail.com 0777777778 9");
 
         //Act
         main.menu(scanner);
