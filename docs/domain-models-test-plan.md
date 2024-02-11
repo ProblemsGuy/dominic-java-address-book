@@ -47,6 +47,9 @@ classDiagram
         +editEmail(Scanner scanner) void
         +printAddressBook(Scanner scanner) void
     }
+
+    AddressBook "1" *-- "0..*" Contact
+    Main "1" -- "1" AddressBook
     
 ```
 
@@ -62,6 +65,8 @@ classDiagram
 - Does `checkDuplicatedName()` return true when the parameter is included in the `contactList`?
 - Does `checkDuplicatedNumber()` return true when the parameter is included in the `contactList`?
 - Does `checkDuplicatedEmail()` return true when the parameter is included in the `contactList`?
+
+### Main
 - Does `menu()` progress if it's given a '1' input, and can a user then add a contact?
 - Does `menu()` progress if it's given a '2' input, and can a user then remove a contact?
 - Does trying to remove a contact through the `menu()` that doesn't exist warn the user?
@@ -69,4 +74,6 @@ classDiagram
 - Does `editContact()` allow the user to edit a given Contact?
 - Does duplicate data not get input into the AddressBook when using `addContact()`?
 - Does duplicate data not get input into the AddressBook when using `editName()`/`editNumber()`/`editEmail()`?
-
+- Does a name with numbers in it not get passed into the Contact?
+- Does a number which doesn't follow the `^[0-9*#]$` structure not get passed into the Contact?
+- Does an email which doesn't follow the `^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$` not get passed into the Contact?

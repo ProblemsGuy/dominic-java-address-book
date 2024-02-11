@@ -73,4 +73,10 @@ public class AddressBook {
         //Returns true if the email is present, false if not.
         return returnValue;
     }
+
+
+    ///AI ASSISTED CODE
+    public void clearAllContacts(){
+        //contactList.clear();
+    }
 }
