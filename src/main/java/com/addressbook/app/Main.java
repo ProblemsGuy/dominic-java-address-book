@@ -11,18 +11,21 @@ public class Main {
         book = new AddressBook(new ArrayList<Contact>());
     }
 
+    //psmv; runs the menu and starts a functional loop that only exits when the user enters a non-valid input.
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Main main = new Main();
         main.menu(scanner);
     }
 
+    //Simple Intro text.
     public void menu(Scanner scanner){
         p("Welcome to your Address Book! Please enter a number to select an option below.");
         p("------------------------------------------------------------------------------");
         this.next(scanner);
     }
 
+    //Presets a list of options and then moves the user where they selected.
     private void next(Scanner scanner){
         p("1. Add a new contact to your Address Book.");
         p("2. Remove an existing contact from your Address Book.");
@@ -53,9 +56,11 @@ public class Main {
     }
 
     private void addContact(Scanner scanner){
+        //Creates a new Contact
         Contact newContact = new Contact();
         p("Enter the new Contact's name:");
         String newInput = scanner.next();
+        //If the name input is already in the book, it returns to the menu
         if (this.checkName(newInput)) {
             this.next(scanner);
             return;
@@ -63,6 +68,7 @@ public class Main {
         newContact.setName(newInput);
         p("Enter the new Contact's number:");
         newInput = scanner.next();
+        //If the number input is already in the book, it returns to the menu
         if (this.checkNumber(newInput)) {
             this.next(scanner);
             return;
@@ -70,16 +76,20 @@ public class Main {
         newContact.setNumber(newInput);
         p("Enter the new Contact's email:");
         newInput = scanner.next();
+        //If the email input is already in the book, it returns to the menu
         if (this.checkEmail(newInput)) {
             this.next(scanner);
             return;
         }
         newContact.setEmail(newInput);
+        //Adds the contact to the Address Book
         book.addContact(newContact);
         p("Contact is added!");
         p("");
         this.next(scanner);
     }
+
+    //Checks the name isn't already in the Contact
     private boolean checkName(String newInput){
         if(book.checkDuplicatedName(newInput)){
             p("Name is already used.");

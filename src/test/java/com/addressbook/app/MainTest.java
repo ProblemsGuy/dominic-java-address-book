@@ -122,7 +122,7 @@ public class MainTest {
     @DisplayName("Does duplicate data not get input into the AddressBook when using `editContact()`?")
     public void menuTest8(){
         Main main = new Main();
-        Scanner scanner = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jim jim@gmail.com 0777777779 4 Jake 1 Jim 4 Jake 2 jim@gmail.com 4 Jake 3 0777777779 9");
+        Scanner scanner = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jim jim@gmail.com 0777777779 4 Jake Jim Jill 4 Jill jim@gmail.com jill@hotmail.com 4 Jill 3 0777777779 0787878787 9");
 
         //Act
         main.menu(scanner);
@@ -134,9 +134,15 @@ public class MainTest {
     }
 
     @Test
-    @DisplayName("Does a phone number that doesn't start with 07 and is less than 10 digits long get prevent from being input into a Contact?")
+    @DisplayName("Does a name without a capital letter at the start not get passed into the Contact?")
     public void menuEdgeCaseNumbers(){
         Main main = new Main();
-        Scanner scanner = new Scanner("");
+        Scanner scanner = new Scanner("1 jake Jake jake@gmail.com 0777777778 9");
+
+        //Act
+        main.menu(scanner);
+
+        //Assert
+        assertEquals("Jake", main.book.getContactList().get(0).getName());
     }
 }
