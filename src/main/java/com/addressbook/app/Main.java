@@ -102,12 +102,16 @@ public class Main {
     }
 
     private boolean checkNumber(String newInput){
-        if(!book.checkDuplicatedNumber(newInput)){
+        if(!book.checkDuplicatedNumber(newInput) && regexValidNumber(newInput)){
             return true;
         }
-        p("Number is already used.");
+        p("Number is already used, or number contains non-digit characters.");
         p("");
         return false;
+    }
+
+    private boolean regexValidNumber(String newInput){
+        return newInput.matches("^[0-9\\s]+$");
     }
 
     private boolean checkEmail(String newInput){
