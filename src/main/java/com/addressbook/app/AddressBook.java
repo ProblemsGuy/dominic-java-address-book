@@ -77,6 +77,6 @@ public class AddressBook {
 
     ///AI ASSISTED CODE
     public void clearAllContacts(){
-        //contactList.clear();
+        contactList.clear();
     }
 }

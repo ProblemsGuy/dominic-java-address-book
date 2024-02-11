@@ -1,16 +1,13 @@
 package com.addressbook.app;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Main {
     public AddressBook book;
 
     public Main(){
-        book = new AddressBook(new ArrayList<Contact>());
+        book = new AddressBook(new ArrayList<>());
     }
 
     //psvm; runs the menu and starts a functional loop that only exits when the user enters a non-valid input.
@@ -34,6 +31,7 @@ public class Main {
         p("3. Search for a specific contact by name.");
         p("4. Edit an existing contact in your Address Book.");
         p("5. Display the content of your Address Book to view.");
+        p("6. Clear all Contacts.");
         p("Enter any thing else to exit this application");
         p("");
         switch( scanner.next() ){
@@ -51,6 +49,9 @@ public class Main {
                 break;
             case "5":
                 printAddressBook(scanner);
+                break;
+            case "6":
+                clearAll(scanner);
                 break;
             default:
                 break;
@@ -249,5 +250,15 @@ public class Main {
         p("Name: "+ cont.getName());
         p("Number: "+ cont.getNumber());
         p("Email: "+ cont.getEmail());
+    }
+
+    private void clearAll(Scanner scanner){
+        p("Are you sure you want to delete all Contacts? This cannot be undone.");
+        p("Type 'YES' to confirm. Anything else will return you to the menu.");
+        if(scanner.next().equals("YES")){
+            book.clearAllContacts();
+            p("All Contacts cleared!");
+        }
+        this.next(scanner);
     }
 }

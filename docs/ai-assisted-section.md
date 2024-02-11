@@ -13,7 +13,7 @@ classDiagram
     +addContact(contact: Contact): void
     +removeContact(contact: Contact): void
     +clearAllContacts(): void
-    +getContacts(): List<Contact>
+    +getContactList(): List<Contact>
   }
 
   class Contact {
