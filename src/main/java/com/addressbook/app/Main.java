@@ -115,12 +115,16 @@ public class Main {
     }
 
     private boolean checkEmail(String newInput){
-        if(!book.checkDuplicatedEmail(newInput)){
+        if(!book.checkDuplicatedEmail(newInput) && regexValidEmail(newInput)){
             return true;
         }
-        p("Email is already used.");
+        p("Email is already used, or doesn't fit the ---@---.-- structure.");
         p("");
         return false;
+    }
+
+    private boolean regexValidEmail(String newInput){
+        return newInput.matches("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$");
     }
 
     private Contact findContactByName(Scanner scanner){
@@ -155,6 +159,7 @@ public class Main {
     private void editContact(Scanner scanner){
         Contact foundContact = findContactByName(scanner);
         if (foundContact == null){
+            this.next(scanner);
             return;
         }
         p("Which would you like to edit? Please enter the corresponding number.");
@@ -180,42 +185,48 @@ public class Main {
 
     private void editName(Scanner scanner,Contact edit){
         Contact oldContact = edit;
-        p("Enter the Contact's new name:");
-        String newInput = scanner.next();
-        if (this.checkName(newInput)) {
-            this.next(scanner);
-            return;
-        }
+        boolean validInputGiven;
+        String newInput;
+        do {
+            p("Enter the new Contact's name:");
+            newInput = scanner.next();
+            validInputGiven = checkName(newInput);
+        } while (!validInputGiven);
         edit.setName(newInput);
         book.editContact(oldContact,edit);
+        p("Contact name edited!");
         p("");
         this.next(scanner);
     }
 
     private void editNumber(Scanner scanner,Contact edit){
         Contact oldContact = edit;
-        p("Enter the Contact's new number:");
-        String newInput = scanner.next();
-        if (this.checkNumber(newInput)) {
-            this.next(scanner);
-            return;
-        }
+        boolean validInputGiven;
+        String newInput;
+        do {
+            p("Enter the new Contact's number:");
+            newInput = scanner.next();
+            validInputGiven = checkNumber(newInput);
+        } while (!validInputGiven);
         edit.setNumber(newInput);
         book.editContact(oldContact,edit);
+        p("Contact number edited!");
         p("");
         this.next(scanner);
     }
 
     private void editEmail(Scanner scanner,Contact edit){
         Contact oldContact = edit;
-        p("Enter the Contact's new email:");
-        String newInput = scanner.next();
-        if (this.checkEmail(newInput)) {
-            this.next(scanner);
-            return;
-        }
+        boolean validInputGiven;
+        String newInput;
+        do {
+            p("Enter the new Contact's email:");
+            newInput = scanner.next();
+            validInputGiven = checkEmail(newInput);
+        } while (!validInputGiven);
         edit.setEmail(newInput);
         book.editContact(oldContact,edit);
+        p("Contact email edited!");
         p("");
         this.next(scanner);
     }

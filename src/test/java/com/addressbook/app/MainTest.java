@@ -21,8 +21,8 @@ public class MainTest {
 
         //Assert
         assertEquals("Jake", main.book.getContactList().get(0).getName());
-        assertEquals("jake@gmail.com", main.book.getContactList().get(0).getNumber());
-        assertEquals("0777777778", main.book.getContactList().get(0).getEmail());
+        assertEquals("jake@gmail.com", main.book.getContactList().get(0).getEmail());
+        assertEquals("0777777778", main.book.getContactList().get(0).getNumber());
     }
 
     @Test
@@ -78,21 +78,15 @@ public class MainTest {
     public void menuTest5() {
         //Arrange
         Main main = new Main();
-        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 9");
-        main.menu(scanner1);
-        Scanner scanner2 = new Scanner("4 Jake 1 Jim 9");
-        Scanner scanner3 = new Scanner("4 Jim 2 jim@gmail.com 9");
-        Scanner scanner4 = new Scanner("4 Jim 3 0799999998 9");
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 4 Jake 1 Jim 4 Jim 3 jim@gmail.com 4 Jim 2 0799999998 9");
 
         //Act
-        main.menu(scanner2);
-        main.menu(scanner3);
-        main.menu(scanner4);
+        main.menu(scanner1);
 
         //Assert
         assertEquals("Jim", main.book.getContactList().get(0).getName());
-        assertEquals("jim@gmail.com", main.book.getContactList().get(0).getNumber());
-        assertEquals("0799999998", main.book.getContactList().get(0).getEmail());
+        assertEquals("jim@gmail.com", main.book.getContactList().get(0).getEmail());
+        assertEquals("0799999998", main.book.getContactList().get(0).getNumber());
     }
 
     @Test
@@ -100,13 +94,15 @@ public class MainTest {
     public void menuTest6(){
         //Arrange
         Main main = new Main();
-        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jake 1 Jim jake@gmail.com 1 Jim jim@gmail.com 0777777778 9");
+        Scanner scanner1 = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jake Jim jake@gmail.com jim@gmail.com 0777777778 0799999998 9");
 
         //Act
         main.menu(scanner1);
 
         //Assert
-        assertEquals(1, main.book.getContactList().size());
+        assertEquals("Jim", main.book.getContactList().get(1).getName());
+        assertEquals("jim@gmail.com", main.book.getContactList().get(1).getEmail());
+        assertEquals("0799999998", main.book.getContactList().get(1).getNumber());
     }
 
     @Test
@@ -122,15 +118,15 @@ public class MainTest {
     @DisplayName("Does duplicate data not get input into the AddressBook when using `editContact()`?")
     public void menuTest8(){
         Main main = new Main();
-        Scanner scanner = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jim jim@gmail.com 0777777779 4 Jake Jim Jill 4 Jill jim@gmail.com jill@hotmail.com 4 Jill 3 0777777779 0787878787 9");
+        Scanner scanner = new Scanner("1 Jake jake@gmail.com 0777777778 1 Jim jim@gmail.com 0777777779 4 Jake 1 Jim Jill 4 Jill 3 jim@gmail.com jill@hotmail.com 4 Jill 2 0777777779 0787878787 9");
 
         //Act
         main.menu(scanner);
 
         //Assert
-        assertEquals("Jake", main.book.getContactList().get(0).getName());
-        assertEquals("jake@gmail.com", main.book.getContactList().get(0).getNumber());
-        assertEquals("0777777778", main.book.getContactList().get(0).getEmail());
+        assertEquals("Jill", main.book.getContactList().get(0).getName());
+        assertEquals("jill@hotmail.com", main.book.getContactList().get(0).getEmail());
+        assertEquals("0787878787", main.book.getContactList().get(0).getNumber());
     }
 
     @Test
