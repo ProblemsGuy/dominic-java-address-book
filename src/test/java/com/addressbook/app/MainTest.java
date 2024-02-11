@@ -158,4 +158,17 @@ public class MainTest {
         //Assert
         assertEquals("0777777778", main.book.getContactList().get(0).getNumber());
     }
+
+    @Test
+    @DisplayName("Does an email which doesn't follow the `^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$` not get passed into the Contact?")
+    public void menuEdgeCaseEmail(){
+        Main main = new Main();
+        Scanner scanner = new Scanner("1 Jake jill258.loll jake@gmail.com 0777777778 9");
+
+        //Act
+        main.menu(scanner);
+
+        //Assert
+        assertEquals("jake@gmail.com", main.book.getContactList().get(0).getEmail());
+    }
 }
