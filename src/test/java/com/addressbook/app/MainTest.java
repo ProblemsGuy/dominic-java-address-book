@@ -135,7 +135,7 @@ public class MainTest {
 
     @Test
     @DisplayName("Does a name without a capital letter at the start not get passed into the Contact?")
-    public void menuEdgeCaseNumbers(){
+    public void menuEdgeCaseNames(){
         Main main = new Main();
         Scanner scanner = new Scanner("1 j2ake Jake jake@gmail.com 0777777778 9");
 
@@ -144,5 +144,18 @@ public class MainTest {
 
         //Assert
         assertEquals("Jake", main.book.getContactList().get(0).getName());
+    }
+
+    @Test
+    @DisplayName("Does a number which doesn't follow the `^[0-9*#]$` structure not get passed into the Contact?")
+    public void menuEdgeCaseNumbers(){
+        Main main = new Main();
+        Scanner scanner = new Scanner("1 Jake jake@gmail.com stabstabstabstab 0777777778 9");
+
+        //Act
+        main.menu(scanner);
+
+        //Assert
+        assertEquals("0777777778", main.book.getContactList().get(0).getNumber());
     }
 }
