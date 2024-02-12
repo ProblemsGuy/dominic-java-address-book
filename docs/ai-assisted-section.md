@@ -26,16 +26,16 @@ classDiagram
 ```
 
 #### Evidence:
-![Mermaid diagram screenshot](/images/classDiagram_screenshot.png)
+![Mermaid diagram screenshot](./images/classDiagram_screenshot.png)
 
 ### Java Code
 
 #### Evidence:
-![Java Code Screenshot](/images/javacode_screenshot.png)
+![Java Code Screenshot](./images/javacode_screenshot.png)
 
 ### Unit Test
 
 #### Evidence:
 
-![Unit Test question](/images/unitTest_question.png)
-![Unit Test code](/images/unitTest_code.png)
+![Unit Test question](./images/unitTest_question.png)
+![Unit Test code](./images/unitTest_code.png)
